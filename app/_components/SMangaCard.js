@@ -13,7 +13,7 @@ export default function SMangaCard(props){
         >
             <div className="relative cursor-pointer">
                 <Image
-                    src={Utils.getHostingerImages(manga.coverSm || manga.cover_sm)}
+                    src={manga.coverSm || manga.cover_sm}
                     alt="comic-cover"
                     width={230}
                     sizes="auto"

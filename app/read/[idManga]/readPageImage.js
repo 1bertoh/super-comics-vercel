@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function ReadPageImage({page}){
     return(
         <Image
-            src={Utils.getHostingerImages(page.url)}
+            src={page.url}
             className="rounded-xl mx-auto"
             alt={"comic " + page.alt}
             sizes="auto"

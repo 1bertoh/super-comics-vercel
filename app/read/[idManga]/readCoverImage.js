@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function ReadCoverImage({manga}){
     return (
         <Image
-            src={Utils.getHostingerImages(manga.coverLg)}
+            src={manga.coverLg}
             className="rounded-xl mx-auto"
             alt={"comic - "+manga.name + " cover"}
             sizes="auto"
