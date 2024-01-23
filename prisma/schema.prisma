@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file: @/db.db"
+  shadowDatabaseUrl =   "file: @/shadowdb.db"
+}
+
+//relaçaõ muitos pra muitos min 41 > https://www.youtube.com/watch?v=C8Oc31uk2Hw
+
+model Manga {
+  id               Int             @id @default(autoincrement())
+  name             String          
+  parodyId         Int
+  parody           Parody          @relation(fields: [parodyId], references: [id])
+  coverLg          String          
+  coverSm          String          
+  rating           Float           
+  views            Int             
+  createAt         DateTime        @default(now())
+  languageId       Int
+  language         Language        @relation(fields: [languageId], references: [id])
+  description      String          
+  groups           String          
+  pages            Int             
+  Page             Page[]
+  TagsManga        TagsManga[]
+  CategoryManga    CategoryManga[]
+  AuthorManga    AuthorManga[]
+  CharacterManga CharacterManga[]
+  isWesternReading Int             @default(0)
+  collection String @default(cuid())
+  chapCollection Int @default(1)
+  urlName String  
+  fullName String @default("") 
+}
+
+model Page {
+  id      Int    @id @default(autoincrement())
+  mangaId Int
+  manga   Manga  @relation(fields: [mangaId], references: [id])
+  page    Int    
+  width   Int    
+  height  Int    
+  alt     String 
+  url     String 
+}
+
+model Language {
+  id    Int     @id @default(autoincrement())
+  name  String 
+  count Int @default(0)
+  Manga Manga[]
+  urlName String @default("")
+}
+
+model Category {
+  id            Int             @id @default(autoincrement())
+  name          String          
+  count Int @default(0)
+  CategoryManga CategoryManga[]
+  urlName String @default("")
+}
+
+model Parody {
+  id    Int     @id @default(autoincrement())
+  name  String  
+  count Int @default(0)
+  Manga Manga[]
+  urlName String @default("")
+}
+
+model Author {
+  id    Int     @id @default(autoincrement())
+  name  String  
+  count Int @default(0)
+  AuthorManga AuthorManga[]
+  urlName String @default("")
+}
+
+model Tags {
+  id          Int         @id @default(autoincrement())
+  name        String      
+  description String      
+  count Int @default(0)
+  TagsManga   TagsManga[]
+  urlName String  @default("")
+}
+
+model Character {
+  id          Int         @id @default(autoincrement())
+  name        String      
+  count Int @default(0)
+  CharacterManga   CharacterManga[]
+  urlName String  @default("")
+}
+
+model CharacterManga {
+  id Int @id @default(autoincrement())
+
+  mangaId Int
+  Manga   Manga @relation(fields: [mangaId], references: [id])
+
+  characterId Int
+  Character   Character @relation(fields: [characterId], references: [id])
+}
+model TagsManga {
+  id Int @id @default(autoincrement())
+
+  mangaId Int
+  Manga   Manga @relation(fields: [mangaId], references: [id])
+
+  tagId Int
+  Tag   Tags @relation(fields: [tagId], references: [id])
+}
+
+model CategoryManga {
+  id Int @id @default(autoincrement())
+
+  mangaId Int
+  Manga   Manga @relation(fields: [mangaId], references: [id])
+
+  categoryId Int
+  Category   Category @relation(fields: [categoryId], references: [id])
+}
+
+model AuthorManga {
+  id Int @id @default(autoincrement())
+
+  mangaId Int
+  Manga   Manga @relation(fields: [mangaId], references: [id])
+
+  authorId Int
+  Author   Author @relation(fields: [authorId], references: [id])
+}
