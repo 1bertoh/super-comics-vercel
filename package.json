@@ -1,38 +1,39 @@
 {
-  "name": "super-comics",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "export": "next build && next export",
-    "analyze": "cross-env ANALYZE=true next build",
-    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
-    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
-  },
-  "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^2.0.18",
-    "@next/bundle-analyzer": "^14.0.3",
-    "@prisma/client": "^5.6.0",
-    "cross-env": "^7.0.3",
-    "next": "^14.0.4",
-    "react": "^18",
-    "react-paginate": "^8.2.0",
-    "react-slick": "^0.29.0",
-    "save-dev": "^0.0.1-security",
-    "slick-carousel": "^1.8.1"
-  },
-  "devDependencies": {
-    "@types/node": "20.10.5",
-    "@types/react": "18.2.46",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.3",
-    "postcss": "^8.4.33",
-    "prisma": "^5.6.0",
-    "tailwindcss": "^3.4.0"
-  }
+    "name": "super-comics",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "prisma generate && next build",
+        "start": "next start",
+        "lint": "next lint",
+        "export": "next build && next export",
+        "analyze": "cross-env ANALYZE=true next build",
+        "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+        "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+        "postinstall": "prisma generate"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.17",
+        "@heroicons/react": "^2.0.18",
+        "@next/bundle-analyzer": "^14.0.3",
+        "@prisma/client": "^5.6.0",
+        "cross-env": "^7.0.3",
+        "next": "^14.0.4",
+        "react": "^18",
+        "react-paginate": "^8.2.0",
+        "react-slick": "^0.29.0",
+        "save-dev": "^0.0.1-security",
+        "slick-carousel": "^1.8.1"
+    },
+    "devDependencies": {
+        "@types/node": "20.10.5",
+        "@types/react": "18.2.46",
+        "autoprefixer": "^10.4.16",
+        "eslint": "^8",
+        "eslint-config-next": "14.0.3",
+        "postcss": "^8.4.33",
+        "prisma": "^5.6.0",
+        "tailwindcss": "^3.4.0"
+    }
 }
