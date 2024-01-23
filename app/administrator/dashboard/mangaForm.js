@@ -163,7 +163,7 @@ const MangaInfo =  () => {
         }
 
     },[])
-    const url = 'https://www.superhentai.info/read'
+    const url = 'https://www.supercomic.info/read'
 
     const copy = () => {
         navigator.clipboard.writeText(url+'/'+id);
@@ -580,7 +580,7 @@ const CategorySelector = (props) => {
                 type="text"
                 id="name"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Hentai"
+                placeholder="Comic"
                 onKeyUp={(e) => getInput(e)}
                 required
             />
@@ -1408,11 +1408,11 @@ const ImagePreview = (props) => {
     return (
         <Image
             alt={"cover"}
-            src={src || "https://super-hentai.b-cdn.net/No%20image.webp"}
+            src={src || "https://i.ibb.co/zb5ZH0N/No-image.webp"}
             width={320}
             height={760}
             onError={() =>
-                setSrc("https://super-hentai.b-cdn.net/No%20image.webp")
+                setSrc("https://i.ibb.co/zb5ZH0N/No-image.webp")
             }
             loader={({ src, width: w, quality }) => {
                 const q = 25;
