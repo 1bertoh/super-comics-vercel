@@ -73,11 +73,6 @@ async function generateTopWeek() {
         orderBy: {
             views: "desc",
         },
-        where: {
-            createAt: {
-                gte: dataUmaSemanaAtras,
-            },
-        },
     });
 
     let listTopWeek = listaMangas.map((manga, index) => {
